@@ -36,7 +36,9 @@ exports.readAll = (callback) => {
         temp = id.slice(0, 5);
         results.push({ id: temp, text: temp });
       });
-      callback(null, results);
+      Promise.all(results).then((values) => {
+        callback(null, values);
+      });
     }
   });
 };
